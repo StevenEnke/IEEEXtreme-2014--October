@@ -39,7 +39,8 @@ int main() {
 	for(int i = 0; i < N; i++) {
 		output += numbers[i];
 	}
-		
+	cout << numbers[0] << endl;
+	cout << output << endl;
 	cout << output % MODULUS << endl;
 	
     return 0;
