@@ -7,7 +7,7 @@ using namespace std;
 
 int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
-	int N, M, K, back, minFoundK, subSeqK; // subSeqK is the K-th term for a particular subsequence. minFoundK is the minimum Kth term through all subsequences
+	int N, M, K, minFoundK, subSeqK; // subSeqK is the K-th term for a particular subsequence. minFoundK is the minimum Kth term through all subsequences
 	vector<int> numbers;
 	vector<int> subSequence;
 	
@@ -27,23 +27,16 @@ int main() {
 	for(int i = 0; i < M; i++) {
 		subSequence[i] = numbers[i];
 	}
-	back = numbers.back();
-	numbers.pop_back();
-	numbers.insert(numbers.begin(), back);
 	
 	sort(subSequence.begin(), subSequence.end());
 	minFoundK = subSequence[K-1];
 	
 	// Finding all sub-sequences and finding K-th value from each one, keeping min K
-	for(int i = 1; i < N; i++) {
-		for(int j = 0; i < M; j++) {
-	
-			subSequence[j] = numbers[j];
+	for(int i = 1; i < (N + M); i++) {
+		for(int j = 0; j < M; j++) {
+			subSequence[i] = numbers[(i+j) % (N-1)];
 		}
-		back = numbers.back();
-		numbers.pop_back();
-		numbers.insert(numbers.begin(), back);
-			
+		
 		sort(subSequence.begin(), subSequence.end());
 		subSeqK = subSequence[K-1];
 
@@ -51,7 +44,6 @@ int main() {
 			minFoundK = subSeqK;
 		}
 	}	
-	
 	cout << minFoundK;
     return 0;
 }
