@@ -15,14 +15,17 @@ int main() {
 	cin >> N;
 	cin >> M;
 	cin >> K;
-	
-	numbers.resize (N);
+		
+	numbers.resize (N+M);
 	subSequence.resize (M);
 	// Second line of the input will contain N integers separated by spaces in clockwise order starting from an arbitrary location.
 	for(int i = 0; i < N; i++) {
 		cin >> numbers[i];
 	}
-
+	for(int i = 0; i < M; i++) {
+		numbers[N + i] = numbers[i];
+	}
+	
 	// K-th value for first subsequence
 	for(int i = 0; i < M; i++) {
 		subSequence[i] = numbers[i];
@@ -30,11 +33,11 @@ int main() {
 	
 	sort(subSequence.begin(), subSequence.end());
 	minFoundK = subSequence[K-1];
-	
+
 	// Finding all sub-sequences and finding K-th value from each one, keeping min K
-	for(int i = 1; i < (N + M); i++) {
+	for(int i = 0; i < N+1; i++) {
 		for(int j = 0; j < M; j++) {
-			subSequence[i] = numbers[(i+j) % (N-1)];
+			subSequence[j] = numbers[i + j];
 		}
 		
 		sort(subSequence.begin(), subSequence.end());
