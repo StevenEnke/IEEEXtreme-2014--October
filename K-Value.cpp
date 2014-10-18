@@ -5,11 +5,11 @@
 #include <algorithm>
 using namespace std;
 
-int main() {, 
+int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
-	int N, M, K, output, minFoundK, subSeqK; // subSeqK is the K-th term for a particular subsequence. minFoundK is the minimum Kth term through all subsequences
+	int N, M, K, back, minFoundK, subSeqK; // subSeqK is the K-th term for a particular subsequence. minFoundK is the minimum Kth term through all subsequences
 	vector<int> numbers;
-	vector<int> subSequence'
+	vector<int> subSequence;
 	
 	// First line of the input will contain three integers N, M and K separated by spaces respectively. 
 	cin >> N;
@@ -27,14 +27,31 @@ int main() {,
 	for(int i = 0; i < M; i++) {
 		subSequence[i] = numbers[i];
 	}
+	back = numbers.back();
+	numbers.pop_back();
+	numbers.insert(numbers.begin(), back);
 	
 	sort(subSequence.begin(), subSequence.end());
 	minFoundK = subSequence[K-1];
 	
 	// Finding all sub-sequences and finding K-th value from each one, keeping min K
-	for(int i = 0; i < M; i++); {
-		
+	for(int i = 1; i < N; i++) {
+		for(int j = 0; i < M; j++) {
 	
-	cout << output;
+			subSequence[j] = numbers[j];
+		}
+		back = numbers.back();
+		numbers.pop_back();
+		numbers.insert(numbers.begin(), back);
+			
+		sort(subSequence.begin(), subSequence.end());
+		subSeqK = subSequence[K-1];
+
+		if(minFoundK > subSeqK) {
+			minFoundK = subSeqK;
+		}
+	}	
+	
+	cout << minFoundK;
     return 0;
 }
