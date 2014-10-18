@@ -5,21 +5,19 @@
 #include <algorithm>
 using namespace std;
 
-const MAX_N = 100000;
+const int MAX_N = 100000;
 
 int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
 	int N, M, K, minFoundK, subSeqK; // subSeqK is the K-th term for a particular subsequence. minFoundK is the minimum Kth term through all subsequences
-	vector<int> numbers;
-	vector<int> subSequence;
+	int numbers[2*MAX_N];
+	int subSequence[MAX_N];
 	
 	// First line of the input will contain three integers N, M and K separated by spaces respectively. 
 	cin >> N;
 	cin >> M;
 	cin >> K;
 		
-	numbers.resize (N+M);
-	subSequence.resize (M);
 	// Second line of the input will contain N integers separated by spaces in clockwise order starting from an arbitrary location.
 	for(int i = 0; i < N; i++) {
 		cin >> numbers[i];
@@ -52,3 +50,4 @@ int main() {
 	cout << minFoundK;
     return 0;
 }
+

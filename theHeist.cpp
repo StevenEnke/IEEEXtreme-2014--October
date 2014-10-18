@@ -51,9 +51,9 @@ int main() {
 	
     return 0;
 }
-
+int
 int knapsack(int n, int v[], int w[], int C) {
-	float v_per_w;
+	vector<int> v_per_w (n);
 	int currentC;
 	int value, i;
 	
