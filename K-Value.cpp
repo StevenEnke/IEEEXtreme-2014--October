@@ -5,29 +5,35 @@
 #include <algorithm>
 using namespace std;
 
-void countingSort(int numbersToSort[]m int numElements);
-
-int main() {
+int main() {, 
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
-	int N, M, K, output;
+	int N, M, K, output, minFoundK, subSeqK; // subSeqK is the K-th term for a particular subsequence. minFoundK is the minimum Kth term through all subsequences
 	vector<int> numbers;
+	vector<int> subSequence'
 	
 	// First line of the input will contain three integers N, M and K separated by spaces respectively. 
 	cin >> N;
 	cin >> M;
 	cin >> K;
 	
-	// Second line of the input will contain N integers separated by spaces in clockwise order starting from an arbitrary location. 
 	numbers.resize (N);
+	subSequence.resize (M);
+	// Second line of the input will contain N integers separated by spaces in clockwise order starting from an arbitrary location.
 	for(int i = 0; i < N; i++) {
 		cin >> numbers[i];
 	}
+
+	// K-th value for first subsequence
+	for(int i = 0; i < M; i++) {
+		subSequence[i] = numbers[i];
+	}
 	
-	// Sorting code in ascending order using sort function from algorith library
-	sort(numbers.begin(), numbers.end()); 
+	sort(subSequence.begin(), subSequence.end());
+	minFoundK = subSequence[K-1];
 	
-	// Finding K-th value_comp
-	output = numbers[K-1];
+	// Finding all sub-sequences and finding K-th value from each one, keeping min K
+	for(int i = 0; i < M; i++); {
+		
 	
 	cout << output;
     return 0;
